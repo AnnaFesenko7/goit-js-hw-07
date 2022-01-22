@@ -6,6 +6,7 @@ galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 function onGalleryContainerClick(evt) {
+    evt.preventDefault();
     const isImgGalleryEl = evt.target.classList.contains('gallery__image');
 
     if (!isImgGalleryEl) {
@@ -27,7 +28,7 @@ function createGalleryCardMarkup(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
         <div class="gallery__item">
-            <a class="gallery__link" >
+            <a class="gallery__link" href="${original}" >
                 <img
                     class="gallery__image"
                     src="${preview}"
@@ -52,5 +53,7 @@ function modalActive(largeImgActiveEl) {
 	`).show()
 
 }
+
+
 
 
