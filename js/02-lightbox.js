@@ -3,25 +3,9 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery');
 const cardsMarkup = createGalleryCardMarkup(galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
-galleryContainer.addEventListener('click', onGalleryContainerClick);
+galleryContainer.addEventListener('click', lightbox);
 
-function onGalleryContainerClick(evt) {
-    evt.preventDefault();
-    const isImgGalleryEl = evt.target.classList.contains('gallery__image');
 
-    if (!isImgGalleryEl) {
-        return
-    }
-    const ImgActiveEl = evt.target;
-    
-    console.log("ImgActiveEl", ImgActiveEl)
-    
-    // const largeImgActiveEl = ImgActiveEl.dataset.source;
-    // console.log(" largeImgActiveEl", largeImgActiveEl);
-
-    modalActive();
-
-}
 
 
 function createGalleryCardMarkup(galleryItems) {
@@ -46,8 +30,14 @@ console.log(galleryItems);
 
 
 
-function modalActive() {
 
-    var lightbox = new SimpleLightbox('.gallery a');
+var lightbox = new SimpleLightbox('.gallery a', {
+    captionPosition: 'bottom',
+    captionDelay: 300,
+    captionsData: 'alt'
+    });
 
-}
+
+
+
+
